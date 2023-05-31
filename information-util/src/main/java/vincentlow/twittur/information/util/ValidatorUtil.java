@@ -2,12 +2,27 @@ package vincentlow.twittur.information.util;
 
 import java.util.Objects;
 
+import vincentlow.twittur.information.client.model.response.AccountCredentialResponse;
 import vincentlow.twittur.information.client.model.response.AccountProfileResponse;
 import vincentlow.twittur.information.model.constant.ExceptionMessage;
 import vincentlow.twittur.information.web.model.response.exception.BadRequestException;
 import vincentlow.twittur.information.web.model.response.exception.NotFoundException;
 
 public class ValidatorUtil {
+
+  public static void validateState(boolean expression, String errorMessage) {
+
+    if (!expression) {
+      throw new BadRequestException(errorMessage);
+    }
+  }
+
+  public static void validateArgument(boolean expression, String errorMessage) {
+
+    if (!expression) {
+      throw new BadRequestException(errorMessage);
+    }
+  }
 
   public static void validatePageableRequest(int pageNumber, int pageSize) {
 
@@ -24,5 +39,12 @@ public class ValidatorUtil {
       throw new NotFoundException(errorMessage);
     }
     return account;
+  }
+
+  public static void validateAccount(AccountCredentialResponse account, String errorMessage) {
+
+    if (Objects.isNull(account)) {
+      throw new NotFoundException(errorMessage);
+    }
   }
 }

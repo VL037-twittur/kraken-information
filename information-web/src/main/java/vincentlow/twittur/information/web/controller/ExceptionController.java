@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import jakarta.mail.MessagingException;
 import lombok.extern.slf4j.Slf4j;
 import vincentlow.twittur.base.web.controller.BaseController;
 import vincentlow.twittur.base.web.model.response.api.ApiResponse;
@@ -32,7 +33,7 @@ public class ExceptionController extends BaseController {
     return toErrorResponseEntity(toErrorApiResponse(HttpStatus.NOT_FOUND, ex.getMessage()), HttpStatus.NOT_FOUND);
   }
 
-  @ExceptionHandler(value = {DataAccessException.class, ServiceUnavailableException.class})
+  @ExceptionHandler(value = {DataAccessException.class, ServiceUnavailableException.class, MessagingException.class})
   public ResponseEntity handleServiceUnavailableException(RuntimeException ex) {
 
     log.error("#handleServiceUnavailableException ERROR! with error: {}", ex.getMessage());
