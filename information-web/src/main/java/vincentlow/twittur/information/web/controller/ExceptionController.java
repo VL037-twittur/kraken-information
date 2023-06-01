@@ -12,6 +12,7 @@ import vincentlow.twittur.base.web.controller.BaseController;
 import vincentlow.twittur.base.web.model.response.api.ApiResponse;
 import vincentlow.twittur.information.model.constant.ExceptionMessage;
 import vincentlow.twittur.information.web.model.response.exception.BadRequestException;
+import vincentlow.twittur.information.web.model.response.exception.ConflictException;
 import vincentlow.twittur.information.web.model.response.exception.NotFoundException;
 import vincentlow.twittur.information.web.model.response.exception.ServiceUnavailableException;
 
@@ -31,6 +32,13 @@ public class ExceptionController extends BaseController {
 
     log.error("#handleNotFoundException ERROR! with error: {}", ex.getMessage());
     return toErrorResponseEntity(toErrorApiResponse(HttpStatus.NOT_FOUND, ex.getMessage()), HttpStatus.NOT_FOUND);
+  }
+
+  @ExceptionHandler(value = {ConflictException.class})
+  public ResponseEntity handleConflictException(ConflictException ex) {
+
+    log.error("#handleConflictException ERROR! with error: {}", ex.getMessage());
+    return toErrorResponseEntity(toErrorApiResponse(HttpStatus.CONFLICT, ex.getMessage()), HttpStatus.CONFLICT);
   }
 
   @ExceptionHandler(value = {DataAccessException.class, ServiceUnavailableException.class, MessagingException.class})

@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmailRequest implements Serializable {
+public class CreateEmailTemplateRequest implements Serializable {
 
-  private static final long serialVersionUID = -142800602376790028L;
-
-  private String recipient;
+  private static final long serialVersionUID = 720576531751094483L;
 
   private String templateCode;
 
-  private String username;
+  private String subject;
+
+  private String body;
 }
