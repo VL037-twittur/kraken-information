@@ -11,7 +11,7 @@ import lombok.Data;
 public class Notification extends BaseEntity {
 
   @Column(name = "sender_id")
-  private String senderId; // if "SYSTEM" than it's a system-generated notification, else account id??
+  private String senderId; // if "KRAKEN-INFORMATION" than it's a system-generated notification, else account id??
 
   @Column(name = "recipient_id")
   private String recipientId; // accountProfile ID

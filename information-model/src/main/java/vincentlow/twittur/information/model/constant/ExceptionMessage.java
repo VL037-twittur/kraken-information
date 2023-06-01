@@ -9,4 +9,8 @@ public interface ExceptionMessage {
   String SERVICE_TEMPORARILY_UNAVAILABLE = "service temporarily unavailable";
 
   String ACCOUNT_NOT_FOUND = "account not found";
+
+  String EMAIL_TEMPLATE_NOT_FOUND = "email template not found";
+
+  String EMAIL_TEMPLATE_CODE_IS_TAKEN = "email template code is taken";
 }
